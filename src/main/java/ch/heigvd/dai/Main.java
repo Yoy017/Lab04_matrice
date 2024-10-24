@@ -13,7 +13,10 @@ public class Main {
         };
         Matrix dos = new Matrix(content, MODULO);
 
+        Matrix tre = Matrix.operation(one, dos, new Addition());
+
         System.out.println(one);
         System.out.println(dos);
+        System.out.println(tre);
     }
 }

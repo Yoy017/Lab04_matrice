@@ -21,7 +21,6 @@ public class Matrix {
     }
 
     public Matrix(int[][] content, int mod){
-
         for(int y = 0; y < content.length; ++y){
             for(int x = 0; x < content[0].length; ++x) {
                 if(content[y][x] >= 0 && content[y][x] < mod) continue;
