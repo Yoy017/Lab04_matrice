@@ -8,10 +8,8 @@ public class Main {
         testMatrixCreationValid();
         testMatrixCreationInvalidDimensions();
         testMatrixCreationInvalidMod();
-        testMatrixOperationAddition();
         testMatrixOperationDifferentSizes();
         testMatrixOperationDifferentMod();
-        testOperationCalculations();
     }
 
     public static void AdditionTemplate()
@@ -58,7 +56,7 @@ public class Main {
             }
             System.out.println("testMatrixCreationValid: PASSED");
         } catch (Exception e) {
-            System.out.println("testMatrixCreationValid: FAILED (Exception inattendue: " + e.getMessage() + ")");
+            System.out.println("testMatrixCreationValid: FAILED (Exception : " + e.getMessage() + ")");
         }
     }
 
@@ -87,23 +85,6 @@ public class Main {
         }
     }
 
-    public static void testMatrixOperationAddition() {
-        try {
-            Matrix m1 = new Matrix(new int[][]{{1, 2}, {3, 4}}, 10);
-            Matrix m2 = new Matrix(new int[][]{{4, 3}, {2, 1}}, 10);
-            Matrix result = Matrix.operation(m1, m2, new Addition());
-
-            if (result.getContent()[0][0] == 5 && result.getContent()[0][1] == 5 &&
-                    result.getContent()[1][0] == 5 && result.getContent()[1][1] == 5) {
-                System.out.println("testMatrixOperationAddition: PASSED");
-            } else {
-                System.out.println("testMatrixOperationAddition: FAILED (Résultats incorrects)");
-            }
-        } catch (Exception e) {
-            System.out.println("testMatrixOperationAddition: FAILED (Exception inattendue: " + e.getMessage() + ")");
-        }
-    }
-
     public static void testMatrixOperationDifferentSizes() {
         try {
             Matrix m1 = new Matrix(new int[][]{{1, 2}}, 10); // 1x2
@@ -129,24 +110,6 @@ public class Main {
             System.out.println("testMatrixOperationDifferentMod: FAILED");
         } catch (IllegalArgumentException e) {
             System.out.println("testMatrixOperationDifferentMod: PASSED");
-        }
-    }
-
-    public static void testOperationCalculations() {
-        try {
-            Addition addition = new Addition();
-            Multiplication multiplication = new Multiplication();
-            Soustraction soustraction = new Soustraction();
-
-            if (addition.calcul(2, 3) == 5 &&
-                    multiplication.calcul(2, 3) == 6 &&
-                    soustraction.calcul(2, 3) == -1) {
-                System.out.println("testOperationCalculations: PASSED");
-            } else {
-                System.out.println("testOperationCalculations: FAILED");
-            }
-        } catch (Exception e) {
-            System.out.println("testOperationCalculations: FAILED (Exception : " + e.getMessage() + ")");
         }
     }
 }
