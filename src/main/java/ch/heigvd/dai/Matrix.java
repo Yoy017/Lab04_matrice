@@ -74,22 +74,21 @@ public class Matrix {
      * Effectue une opération sur deux matrices et retourne le résultat.
      * La matrice retournée a les dimensions maximales des deux matrices.
      * Si les dimensions sont différentes, les valeurs manquantes sont considérées comme 0.
-     * @param lhs la matrice de gauche.
-     * @param rhs la matrice de droite.
+     * @param rhs autre matrice.
      * @param op  l'opération à effectuer entre les éléments.
      * @return une nouvelle matrice résultant de l'opération.
      * @throws IllegalArgumentException si les modulos des matrices ne sont pas identiques.
      */
-    public static Matrix operation(Matrix lhs, Matrix rhs, Operation op) {
-        if(lhs.mod != rhs.mod) {
+    public Matrix operation(Matrix rhs, Operation op) {
+        if(mod != rhs.mod) {
             throw new IllegalArgumentException("Les matrices doivent avoir le même modulo.");
         }
 
-        Matrix res = new Matrix(Math.max(lhs.m, rhs.m), Math.max(lhs.n, rhs.n), lhs.mod);
+        Matrix res = new Matrix(Math.max(m, rhs.m), Math.max(n, rhs.n), mod);
         for(int y = 0; y < res.m; y++) {
             for(int x = 0; x < res.n; x++) {
                 //Fixe issue where one matrice is smaller than the other
-                int lhsOp = y >= lhs.m || x >= lhs.n ? 0 : lhs.content[y][x];
+                int lhsOp = y >= m || x >= n ? 0 : content[y][x];
                 int rhsOp = y >= rhs.m || x >= rhs.n ? 0 : rhs.content[y][x];
                 res.content[y][x] = Math.floorMod(op.calcul(lhsOp, rhsOp), res.mod);
             }

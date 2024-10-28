@@ -29,13 +29,13 @@ public class Main {
         Matrix two = new Matrix(content2, MODULO);
         System.out.println("two\n" + two);
 
-        Matrix add = Matrix.operation(one, two, new Addition());
+        Matrix add = one.operation(two, new Addition());
         System.out.println("one + two\n" + add);
 
-        Matrix sub = Matrix.operation(one, two, new Soustraction());
+        Matrix sub = one.operation(two, new Soustraction());
         System.out.println("one - two\n" + sub);
 
-        Matrix mul = Matrix.operation(one, two, new Multiplication());
+        Matrix mul = one.operation(two, new Multiplication());
         System.out.println("one x two\n" + mul);
     }
 
@@ -89,7 +89,7 @@ public class Main {
         try {
             Matrix m1 = new Matrix(new int[][]{{1, 2}}, 10); // 1x2
             Matrix m2 = new Matrix(new int[][]{{3}, {4}}, 10); // 2x1
-            Matrix result = Matrix.operation(m1, m2, new Addition());
+            Matrix result = m1.operation(m2, new Addition());
 
             if (result.getContent()[0][0] == 4 && result.getContent()[0][1] == 2 &&
                     result.getContent()[1][0] == 4 && result.getContent()[1][1] == 0) {
@@ -106,7 +106,7 @@ public class Main {
         try {
             Matrix m1 = new Matrix(new int[][]{{1, 2}}, 10);
             Matrix m2 = new Matrix(new int[][]{{3, 4}}, 5);
-            Matrix.operation(m1, m2, new Addition());
+            m1.operation(m2, new Addition());
             System.out.println("testMatrixOperationDifferentMod: FAILED");
         } catch (IllegalArgumentException e) {
             System.out.println("testMatrixOperationDifferentMod: PASSED");
